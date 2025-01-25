@@ -10,11 +10,6 @@ public class Seat : MonoBehaviour
     public float yOffset = 1.0f; // Adjust this value to set the desired offset on the Y-axis
     public float rotationLerpSpeed = 5.0f; // Adjust this value to set the speed of rotation interpolation
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (assignedGameObject != null)

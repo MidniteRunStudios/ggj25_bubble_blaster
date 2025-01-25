@@ -276,7 +276,6 @@ MonoBehaviour:
   - {fileID: 890956086}
   - {fileID: 1744460354}
   - {fileID: 356260162}
-  - {fileID: 376646737}
   - {fileID: 192804432}
   - {fileID: 2018896433}
   - {fileID: 429359111}
@@ -860,7 +859,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 8a27927526628b24193354d59b5b5a69, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
