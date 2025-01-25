@@ -24,6 +24,10 @@ public class Coaster : MonoBehaviour
             currentIndex = (currentIndex + 1) % splineController.points.Length;
         }
 
+        // Update position
         transform.position = Vector3.Lerp(start.position, end.position, progress);
+
+        // Update rotation
+        transform.rotation = Quaternion.Lerp(start.rotation, end.rotation, progress);
     }
 }
