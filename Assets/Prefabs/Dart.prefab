@@ -153,8 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986ea1bfcb7093a4ab12ee12a0c7a661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 40
-  arcHeight: 0.5
+  bulletSpeed: 200
+  arcHeight: 0.25
 --- !u!54 &-4476465580690756771
 Rigidbody:
   m_ObjectHideFlags: 0
