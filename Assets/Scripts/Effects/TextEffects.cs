@@ -1,9 +1,6 @@
 using System.Collections;
 using UnityEngine;
 using TMPro;
-using System.Collections;
-using UnityEngine;
-using TMPro;
 
 [RequireComponent(typeof(TMP_Text))]
 public class TextEffects : MonoBehaviour

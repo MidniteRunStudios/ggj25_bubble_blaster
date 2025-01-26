@@ -16,13 +16,16 @@ public class Coaster : MonoBehaviour
     }
     void Update()
     {
-        if (gameState.isPlaying && !splineAnim.IsPlaying)
-        {
-            splineAnim.Play();
-        }
         if (!gameState.isPlaying)
         {
             splineAnim.Pause();
+            return;
+        }
+
+        if (gameState.isPlaying && !splineAnim.IsPlaying)
+        {
+            splineAnim.Play();
+            return;
         }
     }
 }

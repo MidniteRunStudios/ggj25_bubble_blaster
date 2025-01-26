@@ -4,4 +4,6 @@ using UnityEngine;
 public class GameState : ScriptableObject
 {
     public bool isPlaying;
+
+    public bool LevelComplete;
 }

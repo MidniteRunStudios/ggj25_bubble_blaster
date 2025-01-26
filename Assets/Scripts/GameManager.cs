@@ -1,6 +1,7 @@
 using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -11,6 +12,7 @@ public class GameManager : MonoBehaviour
     public TMP_Text Score_Text;
     public TMP_Text GameOver_Text;
     public TMP_Text NewHighScore_Text;
+    public int targetSceneIndex = -1;
 
     private void Start()
     {
@@ -29,13 +31,45 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        Score_Text.text = PlayerScore.Score.ToString();
         if (GameState == null)
         {
             return;
         }
 
-        if (!GameState.isPlaying && Input.anyKey)
+        UpdateUI();
+
+        CheckQuit();
+
+        CheckStart();
+        CheckComplete();
+    }
+
+    private void UpdateUI()
+    {
+        Score_Text.text = PlayerScore.Score.ToString();
+    }
+
+    private void CheckComplete()
+    {
+        if (GameState.LevelComplete)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            {
+                if (targetSceneIndex != -1)
+                {
+                    SceneManager.LoadScene(targetSceneIndex);
+            }
+            }
+        }
+    }
+
+    private void CheckStart()
+    {
+        if (!GameState.isPlaying && !GameState.LevelComplete && Input.anyKey)
         {
             GameState.isPlaying = true;
             Intro_Text.enabled = false;
@@ -43,16 +77,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private static void CheckQuit()
+    {
+        if (Input.GetKeyUp(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
     public void EndGame()
     {
-        GameState.isPlaying = false;
-        Score_Text.enabled = false;
-        GameOver_Text.enabled = true;
-        GameOver_Text.text = "GAME" + Environment.NewLine + "OVER" + Environment.NewLine + Environment.NewLine + "SCORE: " +  PlayerScore.Score; 
+        UpdateGameState();
+        UpdateText();
+        UpdateScores();
+    }
+
+    private void UpdateScores()
+    {
         if (PlayerScore.Score > HighScore.Score)
         {
             NewHighScore_Text.enabled = true;
             HighScore.Score = PlayerScore.Score;
         }
+    }
+
+    private void UpdateText()
+    {
+        Score_Text.enabled = false;
+        GameOver_Text.enabled = true;
+        GameOver_Text.text = "GAME" + Environment.NewLine + "OVER" + Environment.NewLine + Environment.NewLine + "SCORE: " + PlayerScore.Score;
+    }
+
+    private void UpdateGameState()
+    {
+        GameState.isPlaying = false;
+        GameState.LevelComplete = true;
     }
 }

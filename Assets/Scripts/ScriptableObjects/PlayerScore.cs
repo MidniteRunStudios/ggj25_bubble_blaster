@@ -6,15 +6,15 @@ using UnityEngine;
 
 public class PlayerScore : ScriptableObject, IScore
 {
-    public int Score { get; set; }
-
+    public int Score { get => _score; set => _score = value; }
+    [SerializeField] private int _score;
     public void AddScore(int score)
     {
-        Score += score;
+        _score += score;
     }
 
     public void ResetScore()
     {
-        Score = 0;
+        _score = 0;
     }
 }
