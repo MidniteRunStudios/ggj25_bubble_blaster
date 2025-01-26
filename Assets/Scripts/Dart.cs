@@ -13,7 +13,7 @@ public class Dart : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
 
-        Vector3 targetPosition = transform.position + transform.forward * 10f; // Assuming the dart is shot forward
+        Vector3 targetPosition = transform.position + transform.forward * 2f; // Assuming the dart is shot forward
         StartCoroutine(ApplyArcVelocity(targetPosition));
     }
 
