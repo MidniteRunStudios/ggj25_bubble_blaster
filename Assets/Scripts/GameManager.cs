@@ -4,14 +4,25 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameState GameState;
-    public TMP_Text TMP_Text;
+    public PlayerScore PlayerScore;
+    public TMP_Text Intro_Text;
+    public TMP_Text Score_Text;
 
     private void Start()
     {
-        GameState.isPlaying = false;
+        Reset();
     }
+
+    private void Reset()
+    {
+        GameState.isPlaying = false;
+        PlayerScore.ResetScore();
+        Score_Text.enabled = false;
+    }
+
     private void Update()
     {
+        Score_Text.text = PlayerScore.Score.ToString();
         if (GameState == null)
         {
             return;
@@ -22,7 +33,8 @@ public class GameManager : MonoBehaviour
             if (Input.anyKey)
             {
                 GameState.isPlaying = true;
-                TMP_Text.enabled = false;
+                Intro_Text.enabled = false;
+                Score_Text.enabled = true;
             }
         }
     }

@@ -7,8 +7,6 @@ public class Coaster : MonoBehaviour
     
     public GameState gameState;
     public float speed = 5.0f;
-
-    private float t = 0.0f;
     private SplineAnimate splineAnim;
 
     private void Start()
