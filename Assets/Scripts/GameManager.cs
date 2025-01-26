@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     private void Reset()
     {
         GameState.isPlaying = false;
+        GameState.LevelComplete = false;
         PlayerScore.ResetScore();
         Score_Text.enabled = false;
         Intro_Text.enabled = true;
@@ -87,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public void EndGame()
     {
-        UpdateGameState();
+        CompleteLevel();
         UpdateText();
         UpdateScores();
     }
@@ -105,10 +106,14 @@ public class GameManager : MonoBehaviour
     {
         Score_Text.enabled = false;
         GameOver_Text.enabled = true;
-        GameOver_Text.text = "GAME" + Environment.NewLine + "OVER" + Environment.NewLine + Environment.NewLine + "SCORE: " + PlayerScore.Score;
+        GameOver_Text.text = 
+            "GAME" + Environment.NewLine + 
+            "OVER" + Environment.NewLine + 
+            Environment.NewLine + 
+            "SCORE: " + PlayerScore.Score;
     }
 
-    private void UpdateGameState()
+    private void CompleteLevel()
     {
         GameState.isPlaying = false;
         GameState.LevelComplete = true;
