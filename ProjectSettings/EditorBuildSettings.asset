@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level_01_SplineSurfer.unity
     guid: 41df10fa467bc03438fa3304f2576ae4
+  - enabled: 1
+    path: Assets/Scenes/Level_02_Electric_Boogaloo.unity
+    guid: 896bf7d81bcfd1d419668aee043cd84d
   m_configObjects: {}
