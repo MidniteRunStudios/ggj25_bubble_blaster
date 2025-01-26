@@ -58,12 +58,9 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow))
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && targetSceneIndex != -1)
             {
-                if (targetSceneIndex != -1)
-                {
-                    SceneManager.LoadScene(targetSceneIndex);
-            }
+                SceneManager.LoadScene(targetSceneIndex);
             }
         }
     }
