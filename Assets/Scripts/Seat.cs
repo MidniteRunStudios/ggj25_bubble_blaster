@@ -8,18 +8,19 @@ public class Seat : MonoBehaviour
     public float xOffset = 1.0f; // Adjust this value to set the desired offset on the X-axis
     public float zOffset = 1.0f; // Adjust this value to set the desired offset on the Z-axis
     public float yOffset = 1.0f; // Adjust this value to set the desired offset on the Y-axis
-    public float rotationLerpSpeed = 5.0f; // Adjust this value to set the speed of rotation interpolation
+    public float rotationLerpSpeed = 50.0f; // Adjust this value to set the speed of rotation interpolation
 
     void Update()
     {
         if (assignedGameObject != null)
         {
-            // Update the position with the position of the assigned GameObject plus the offsets on the X, Y, and Z axes
-            transform.position = new Vector3(
-                assignedGameObject.transform.position.x + xOffset,
-                assignedGameObject.transform.position.y + yOffset,
-                assignedGameObject.transform.position.z + zOffset
-            );
+            // Calculate the offset in relation to the rotation of the assigned object
+            Vector3 offset = assignedGameObject.transform.right * xOffset +
+                             assignedGameObject.transform.up * yOffset +
+                             assignedGameObject.transform.forward * zOffset;
+
+            // Update the position with the calculated offset
+            transform.position = assignedGameObject.transform.position + offset;
 
             // Update the rotation with the rotation of the assigned GameObject using Lerp
             transform.rotation = Quaternion.Lerp(transform.rotation, assignedGameObject.transform.rotation, Time.deltaTime * rotationLerpSpeed);

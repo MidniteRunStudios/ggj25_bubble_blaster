@@ -31,7 +31,7 @@ public class Dart : MonoBehaviour
         while (elapsedTime < flightDuration)
         {
             float horizontalVelocity = bulletSpeed;
-            Vector3 currentVelocity = direction * horizontalVelocity + Vector3.up * verticalVelocity * Mathf.Sin((elapsedTime / flightDuration) * Mathf.PI);
+            Vector3 currentVelocity = direction * horizontalVelocity  * verticalVelocity * Mathf.Sin((elapsedTime / flightDuration) * Mathf.PI);
             rb.velocity = currentVelocity;
 
             elapsedTime += Time.deltaTime;
