@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerScore : ScriptableObject, IScore
 {
-    public int Score { get; private set; }
+    public int Score { get; set; }
 
     public void AddScore(int score)
     {

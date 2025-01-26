@@ -18,7 +18,11 @@ public class Coaster : MonoBehaviour
     {
         if (gameState.isPlaying && !splineAnim.IsPlaying)
         {
-            splineAnim.Play(); 
+            splineAnim.Play();
+        }
+        if (!gameState.isPlaying)
+        {
+            splineAnim.Pause();
         }
     }
 }
