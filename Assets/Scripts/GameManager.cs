@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour
             {
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && targetSceneIndex != -1)
+            if (Input.GetKeyDown(KeyCode.N) && targetSceneIndex != -1)
             {
                 SceneManager.LoadScene(targetSceneIndex);
             }
