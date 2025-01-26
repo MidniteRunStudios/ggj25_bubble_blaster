@@ -6,7 +6,12 @@ public class Target : MonoBehaviour
 {
     [SerializeField] private int points;
     public PlayerScore PlayerScore;
-    // Start is called before the first frame update
+    private AudioSource audioSource;
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other == null || PlayerScore == null)
@@ -16,6 +21,7 @@ public class Target : MonoBehaviour
 
         if (other.transform.CompareTag("Bullet"))
         {
+            audioSource.Play();
             PlayerScore.AddScore(points);
             Destroy(gameObject);
         }
